@@ -2,12 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import Header from './Header.jsx';
+import Main from './Main.jsx';
 
 const App = () => {
   return (
     <div className='container'>
-      <Header/>
-      <div className="container-view">Some activities should be here</div>
+      <Header />
+      <Main />
     </div>
   );
 };
