@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import Call from './css/components/Call';
-import BlockButton from './css/components/BlockButton';
+import Call from './components/Call.jsx';
+import BlockButton from './components/BlockButton.jsx';
+import './css/main.css';
 
 const Main = () => {
     let [calls, setCalls] = useState([]);
@@ -10,9 +11,9 @@ const Main = () => {
     }, [])
 
     return (
-        <div>
+        <div className='main-container'>
             <div className='archive-all-button'>
-                <BlockButton />
+                <BlockButton text="Archive all calls" />
             </div>
 
             <div className='call-list'>

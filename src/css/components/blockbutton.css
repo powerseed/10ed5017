@@ -1,0 +1,16 @@
+.block-button-container {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    height: 15px;
+    padding: 20px;
+    border-radius: 0px 0px 15px 15px;
+    border: 1px solid #E9EAEC;
+    cursor: pointer;
+}
+
+.archive-all-calls-text {
+    color: var(--text-color-primary);
+    font-size: 14px;
+    font-weight: 600;
+}
