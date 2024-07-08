@@ -29,10 +29,10 @@ header {
   align-items: center;
   font-size: 14px;
   font-weight: 600;
-  color: #A0A0A0
+  color: var(--text-color-secondary)
 }
 
 .tab.selected {
-  color: #404040;
+  color: var(--text-color-primary);
   box-shadow: 0px -3px 0px #FF8C00 inset;
 }
