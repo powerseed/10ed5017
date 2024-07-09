@@ -96,7 +96,7 @@ const Inbox = () => {
                             {
                                 calls.map(call => {
                                     return (
-                                        <Call key={call.id} call={call} removeCallFromList={removeCallFromList} />
+                                        <Call key={call.id} call={call} isArchiveButtonDisplayed={true} removeCallFromList={removeCallFromList} />
                                     )
                                 })
                             }

@@ -78,7 +78,7 @@ const Archived = () => {
                             {
                                 calls.map(call => {
                                     return (
-                                        <Call key={call.id} call={call} />
+                                        <Call key={call.id} call={call} isArchiveButtonDisplayed={false} />
                                     )
                                 })
                             }

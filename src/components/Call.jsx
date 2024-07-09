@@ -89,9 +89,13 @@ const Call = (props) => {
                     </div>
                 </div>
 
-                <div title="Archive this call" className="mr-[5px] cursor-pointer hover:opacity-70" onClick={archiveCall}>
-                    <img className="w-[25px] h-[25px]" src='../../public/images/archive.svg' />
-                </div>
+                {
+                    props.isArchiveButtonDisplayed &&
+                    <div title="Archive this call" className="mr-[5px] cursor-pointer hover:opacity-70" onClick={archiveCall}>
+                        <img className="w-[25px] h-[25px]" src='../../public/images/archive.svg' />
+                    </div>
+                }
+
             </div>
         </div>
     )
