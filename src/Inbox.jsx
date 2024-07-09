@@ -6,6 +6,7 @@ const Inbox = () => {
     let [calls, setCalls] = useState(undefined);
     let [error, setError] = useState(undefined);
     let [isLoading, setIsLoading] = useState(true);
+    let [isArchiving, setIsArchiving] = useState(false);
 
     useEffect(() => {
         fetch(process.env.REACT_APP_BASE_URL_OF_API + "/activities")
@@ -28,8 +29,8 @@ const Inbox = () => {
         }
     }, [calls])
 
-    function archiveAllCalls() {
-        if (calls.length === 0) {
+    useEffect(() => {
+        if (!isArchiving) {
             return;
         }
 
@@ -57,7 +58,16 @@ const Inbox = () => {
 
         Promise.all(promises)
             .then(() => setCalls([]))
+            .then(() => setIsArchiving(false))
             .catch(() => { setError('Something wrong happened when archiving all calls. Please try again later. ') });
+    }, [isArchiving])
+
+    function archiveAllCalls() {
+        if (calls.length === 0) {
+            return;
+        }
+
+        setIsArchiving(true);
     }
 
     function removeCallFromList(callId) {
@@ -68,7 +78,7 @@ const Inbox = () => {
     return (
         <div className='h-full flex flex-col items-center'>
             <div className='w-[90%]'>
-                <BlockButton text="Archive all calls" handleClick={archiveAllCalls} />
+                <BlockButton text="Archive all calls" operatingText="Archiving..." isOperating={isArchiving} handleClick={archiveAllCalls} />
             </div>
 
             {

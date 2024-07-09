@@ -6,6 +6,7 @@ const Archived = () => {
     let [calls, setCalls] = useState(undefined);
     let [error, setError] = useState(undefined);
     let [isLoading, setIsLoading] = useState(true);
+    let [isUnarchiving, setIsUnarchiving] = useState(false);
 
     useEffect(() => {
         fetch(process.env.REACT_APP_BASE_URL_OF_API + "/activities")
@@ -28,8 +29,8 @@ const Archived = () => {
         }
     }, [calls])
 
-    function unarchiveAllCalls() {
-        if (calls.length === 0) {
+    useEffect(() => {
+        if (!isUnarchiving) {
             return;
         }
 
@@ -44,13 +45,22 @@ const Archived = () => {
                     throw new Error();
                 }
             })
+            .then(() => setIsUnarchiving(false))
             .catch(() => setError('Somewrong just occurred. Please try again later. '))
+
+    }, [isUnarchiving])
+
+    function unarchiveAllCalls() {
+        if (calls.length === 0) {
+            return;
+        }
+        setIsUnarchiving(true);
     }
 
     return (
         <div className='h-full flex flex-col items-center'>
             <div className='w-[90%]'>
-                <BlockButton text="Unarchive all calls" handleClick={unarchiveAllCalls} />
+                <BlockButton text="Unarchive all calls" operatingText="Unarchiving..." isOperating={isUnarchiving} handleClick={unarchiveAllCalls} />
             </div>
 
             {
