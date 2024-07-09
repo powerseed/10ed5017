@@ -22,6 +22,10 @@ const Archived = () => {
     }, [])
 
     function unarchiveAllCalls() {
+        if (calls.length === 0) {
+            return;
+        }
+
         fetch(process.env.REACT_APP_BASE_URL_OF_API + "/reset", {
             method: 'PATCH'
         })

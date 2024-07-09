@@ -22,6 +22,10 @@ const Inbox = () => {
     }, [])
 
     function archiveAllCalls() {
+        if (calls.length === 0) {
+            return;
+        }
+
         const promises = calls.map((call) => {
             return new Promise((resolve, reject) => {
                 fetch(process.env.REACT_APP_BASE_URL_OF_API + "/activities/" + call.id, {
