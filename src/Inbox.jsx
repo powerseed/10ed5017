@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Call from './components/Call.jsx';
 import BlockButton from './components/BlockButton.jsx';
-import './css/inbox.css';
 
 const Inbox = () => {
     let [calls, setCalls] = useState([]);
