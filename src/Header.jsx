@@ -1,17 +1,7 @@
 import React, { useRef } from 'react';
 
-const Header = () => {
+const Header = (props) => {
   let tabListRef = useRef(null);
-
-  function handleTabClick(event) {
-    event.target.classList.add('selected');
-
-    for (const child of tabListRef.current.children) {
-      if (child != event.target) {
-        child.classList.remove('selected');
-      }
-    }
-  }
 
   return (
     <header>
@@ -34,11 +24,11 @@ const Header = () => {
       </div>
 
       <div ref={tabListRef} className='tab-list'>
-        <div className='tab' onClick={(event) => handleTabClick(event)}>
+        <div id="inbox" className={`tab ${props.currentTab === 'inbox' ? 'selected' : ''}`} onClick={(event) => props.switchTab(event.target.id)}>
           Inbox
         </div>
 
-        <div className='tab' onClick={(event) => handleTabClick(event)}>
+        <div id="archived" className={`tab ${props.currentTab === 'archived' ? 'selected' : ''}`} onClick={(event) => props.switchTab(event.target.id)}>
           Archived
         </div>
       </div>
