@@ -1,0 +1,96 @@
+.call-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.date-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0px 10px 0px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-color-secondary);
+}
+
+.dashed-divider {
+    margin-bottom: 3px;
+    flex-grow: 1;
+    background-image: linear-gradient(to right, #A0A0A0 10%, rgba(255, 255, 255, 0) 0%);
+    background-position: bottom;
+    background-size: 4px 1px;
+    background-repeat: repeat-x;
+}
+
+.date {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.call-info-container {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    border-radius: 15px;
+    border: 1px solid #E9EAEC;
+    padding: 15px 0px 15px 0px;
+}
+
+.first-column {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.second-column {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+
+.number-container {
+    display: flex;
+    column-gap: 5px;
+}
+
+.phone-number {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-color-primary);
+}
+
+.via-number {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    color: white;
+    font-weight: 600;
+    border-radius: 9999px;
+}
+
+.duration {
+    font-size: 16px;
+    color: var(--text-color-secondary);
+}
+
+.time-container {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    color: var(--text-color-secondary);
+}
+
+.am-pm {
+    margin-left: 5px;
+    padding: 5px;
+    font-size: 10px;
+    font-weight: 800;
+    border-radius: 5px 0px 0px 5px;
+    border: 1px #E9EAEC;
+    border-style: solid none solid solid;
+}
