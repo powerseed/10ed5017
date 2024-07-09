@@ -9,10 +9,15 @@ const Inbox = () => {
 
     useEffect(() => {
         fetch(process.env.REACT_APP_BASE_URL_OF_API + "/activities")
-            .then(response => response.json())
-            .then(calls => {
-                calls = calls.filter(call => !call.is_archived)
-                setCalls(calls)
+            .then(async (response) => {
+                if (response.ok) {
+                    let calls = await response.json()
+                    calls = calls.filter(call => !call.is_archived)
+                    setCalls(calls)
+                }
+                else {
+                    throw new Error()
+                }
             })
             .catch(() => setError('Something wrong just occurred. Please try again later. '));
     }, [])
