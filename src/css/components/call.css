@@ -36,7 +36,6 @@
     border-radius: 15px;
     border: 1px solid #E9EAEC;
     padding: 15px 0px 15px 0px;
-    cursor: pointer;
 }
 
 .first-column {
@@ -88,10 +87,15 @@
 
 .am-pm {
     margin-left: 5px;
+    margin-right: 8px;
     padding: 5px;
     font-size: 10px;
     font-weight: 800;
-    border-radius: 5px 0px 0px 5px;
-    border: 1px #E9EAEC;
-    border-style: solid none solid solid;
+    border-radius: 5px 5px 5px 5px;
+    border: 1px solid #E9EAEC;
+}
+
+.archive-button {
+    margin-right: 5px;
+    cursor: pointer;
 }

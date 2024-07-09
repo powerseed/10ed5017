@@ -1,7 +1,35 @@
 import Moment from "react-moment";
 import '../css/components/call.css'
+import { useState } from "react";
 
 const Call = (props) => {
+    let [isArchiveButtonDisplayed, setIsArchiveButtonDisplayed] = useState(false);
+
+    function toggleArchiveButtonDisplay() {
+        setIsArchiveButtonDisplayed(!isArchiveButtonDisplayed);
+    }
+
+    function archiveCall() {
+        fetch(process.env.REACT_APP_BASE_URL_OF_API + "/activities/" + props.call.id, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                is_archived: true
+            })
+        })
+            .then((response) => {
+                if (response.ok) {
+                    props.removeCallFromList(props.call.id)
+                }
+                else {
+                    throw new Error()
+                }
+            })
+            .catch((error) => { console.log(error) })
+    }
+
     return (
         <div className="call-container">
             <div className="date-container">
@@ -12,7 +40,7 @@ const Call = (props) => {
                 <div className="dashed-divider"></div>
             </div>
 
-            <div className="call-info-container">
+            <div className="call-info-container" onClick={toggleArchiveButtonDisplay}>
                 <div className="first-column">
                     {
                         props.call.direction === "inbound" ?
@@ -49,6 +77,10 @@ const Call = (props) => {
                     <div className="am-pm">
                         <Moment format="A">{props.call.created_at}</Moment>
                     </div>
+                </div>
+
+                <div className="archive-button" onClick={archiveCall}>
+                    <img src='../../public/images/archive.svg' width={25} height={25} />
                 </div>
             </div>
         </div>

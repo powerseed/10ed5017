@@ -50,6 +50,11 @@ const Inbox = () => {
             .catch(() => { setError('Something wrong happened when archiving all calls. Please try again later. ') });
     }
 
+    function removeCallFromList(callId) {
+        let newCallList = calls.filter((call) => call.id !== callId)
+        setCalls(newCallList);
+    }
+
     return (
         <div className='main-container'>
             <div className='archive-all-button'>
@@ -66,7 +71,7 @@ const Inbox = () => {
                         {
                             calls.map(call => {
                                 return (
-                                    <Call key={call.id} call={call} />
+                                    <Call key={call.id} call={call} removeCallFromList={removeCallFromList} />
                                 )
                             })
                         }
