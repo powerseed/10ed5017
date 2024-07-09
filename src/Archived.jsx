@@ -1,9 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import Call from './components/Call.jsx';
 import BlockButton from './components/BlockButton.jsx';
+import Moment from "react-moment";
 
 const Archived = () => {
-    let [calls, setCalls] = useState(undefined);
+    const dividerStyle = {
+        marginBottom: '3px',
+        flexGrow: 1,
+        backgroundImage: "linear-gradient(to right, #A0A0A0 10%, rgba(255, 255, 255, 0) 0%)",
+        backgroundPosition: "bottom",
+        backgroundSize: "4px 1px",
+        backgroundRepeat: "repeat-x"
+    };
+
+    let [dateMapsCall, setDateMapsCall] = useState(undefined);
     let [error, setError] = useState(undefined);
     let [isLoading, setIsLoading] = useState(true);
     let [isUnarchiving, setIsUnarchiving] = useState(false);
@@ -12,9 +22,28 @@ const Archived = () => {
         fetch(process.env.REACT_APP_BASE_URL_OF_API + "/activities")
             .then(async (response) => {
                 if (response.ok) {
-                    let calls = await response.json()
-                    calls = calls.filter(call => call.is_archived)
-                    setCalls(calls)
+                    let calls = await response.json();
+                    let dateMapsCall = new Map();
+
+                    calls.forEach(call => {
+                        if (!call.is_archived) {
+                            return;
+                        }
+
+                        const date = new Date(call.created_at);
+                        const dateWithoutTime = date.toLocaleDateString();
+
+                        const value = dateMapsCall.get(dateWithoutTime);
+
+                        if (value !== undefined) {
+                            value.push(call);
+                        }
+                        else {
+                            dateMapsCall.set(dateWithoutTime, [call])
+                        }
+                    })
+
+                    setDateMapsCall(dateMapsCall)
                 }
                 else {
                     throw new Error()
@@ -24,10 +53,10 @@ const Archived = () => {
     }, [])
 
     useEffect(() => {
-        if (calls !== undefined) {
+        if (dateMapsCall !== undefined) {
             setIsLoading(false);
         }
-    }, [calls])
+    }, [dateMapsCall])
 
     useEffect(() => {
         if (!isUnarchiving) {
@@ -39,7 +68,7 @@ const Archived = () => {
         })
             .then((response) => {
                 if (response.ok) {
-                    setCalls([])
+                    setDateMapsCall(new Map())
                 }
                 else {
                     throw new Error();
@@ -51,9 +80,10 @@ const Archived = () => {
     }, [isUnarchiving])
 
     function unarchiveAllCalls() {
-        if (calls.length === 0) {
+        if (dateMapsCall === undefined || dateMapsCall.size === 0) {
             return;
         }
+
         setIsUnarchiving(true);
     }
 
@@ -74,15 +104,37 @@ const Archived = () => {
                             <img className='w-[50px] h-[50px]' src='../public/images/loading.svg' />
                         </div>
                         :
-                        <div className='w-full flex flex-col'>
+                        <>
                             {
-                                calls.map(call => {
+                                Array.from(dateMapsCall.keys()).map(date => {
                                     return (
-                                        <Call key={call.id} call={call} isArchiveButtonDisplayed={false} />
+                                        <div key={date} className='w-full'>
+                                            <div className="flex justify-center py-[10px] text-[12px] text-[var(--text-color-secondary)] font-bold">
+                                                <div style={dividerStyle}></div>
+
+                                                <div className="mx-[10px]">
+                                                    <Moment format="MMMM, DD YYYY">{date}</Moment>
+                                                </div>
+
+                                                <div style={dividerStyle}></div>
+                                            </div>
+
+                                            <div className='w-full flex flex-col space-y-2'>
+                                                {
+                                                    dateMapsCall.get(date).map(call => {
+                                                        return (
+                                                            <div key={call.id} className='w-full flex flex-col'>
+                                                                <Call key={call.id} call={call} date={date} isArchiveButtonDisplayed={false} />
+                                                            </div>
+                                                        )
+                                                    })
+                                                }
+                                            </div>
+                                        </div>
                                     )
                                 })
                             }
-                        </div>
+                        </>
             }
         </div>
     )
