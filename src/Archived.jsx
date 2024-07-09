@@ -4,7 +4,7 @@ import BlockButton from './components/BlockButton.jsx';
 
 const Archived = () => {
     let [calls, setCalls] = useState([]);
-    let [error, setError] = useState('undefined');
+    let [error, setError] = useState(undefined);
 
     useEffect(() => {
         fetch(process.env.REACT_APP_BASE_URL_OF_API + "/activities")
@@ -16,10 +16,25 @@ const Archived = () => {
             .catch(() => setError('Something wrong just occurred. Please try again later. '));
     }, [])
 
+    function unarchiveAllCalls() {
+        fetch(process.env.REACT_APP_BASE_URL_OF_API + "/reset", {
+            method: 'PATCH'
+        })
+            .then((response) => {
+                if (response.ok) {
+                    setCalls([])
+                }
+                else {
+                    setError('Somewrong just occurred. Please try again later. ');
+                }
+            })
+            .catch(() => setError('Somewrong just occurred. Please try again later. '))
+    }
+
     return (
         <div className='main-container'>
             <div className='archive-all-button'>
-                <BlockButton text="Unarchive all calls" />
+                <BlockButton text="Unarchive all calls" handleClick={unarchiveAllCalls} />
             </div>
 
             {
