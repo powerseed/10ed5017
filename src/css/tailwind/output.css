@@ -658,6 +658,14 @@ video {
   width: 100%;
 }
 
+.w-\[50px\] {
+  width: 50px;
+}
+
+.w-\[80px\] {
+  width: 80px;
+}
+
 .grow {
   flex-grow: 1;
 }

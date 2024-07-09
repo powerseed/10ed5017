@@ -24,16 +24,22 @@ const Header = (props) => {
       </div>
 
       <div ref={tabListRef} className='flex grow items-center justify-evenly'>
-        <div id="inbox"
-          className={`cursor-pointer h-full flex items-center text-[14px] font-bold hover:text-[var(--text-color-primary)] ${props.currentTab === 'inbox' ? 'text-[var(--text-color-primary)] shadow-[0px_-3px_0px_#FF8C00_inset]' : 'text-[var(--text-color-secondary)]'}`}
-          onClick={(event) => props.switchTab(event.target.id)}>
-          Inbox
+        <div className={`w-[80px] h-full flex items-center justify-center text-[14px] font-bold`}>
+          <div id="inbox" className={`flex items-center h-full hover:text-[var(--text-color-primary)] cursor-pointer ${props.currentTab === 'inbox' ? 'text-[var(--text-color-primary)] shadow-[0px_-3px_0px_#FF8C00_inset]' : 'text-[var(--text-color-secondary)]'}`}
+            onClick={(event) => props.switchTab(event.target.id)}
+          >
+            Inbox
+          </div>
         </div>
 
-        <div id="archived"
-          className={`cursor-pointer h-full flex items-center text-[14px] font-bold hover:text-[var(--text-color-primary)] ${props.currentTab === 'archived' ? 'text-[var(--text-color-primary)] shadow-[0px_-3px_0px_#FF8C00_inset]' : 'text-[var(--text-color-secondary)]'}`}
-          onClick={(event) => props.switchTab(event.target.id)}>
-          Archived
+        <img className='w-[25px] h-[25px]' src='../public/images/three-dots-vertical.svg' />
+
+        <div className={`w-[80px] h-full flex items-center justify-center text-[14px] font-bold`}>
+          <div id="archived" className={`flex items-center h-full hover:text-[var(--text-color-primary)] cursor-pointer ${props.currentTab === 'archived' ? 'text-[var(--text-color-primary)] shadow-[0px_-3px_0px_#FF8C00_inset]' : 'text-[var(--text-color-secondary)]'}`}
+            onClick={(event) => props.switchTab(event.target.id)}
+          >
+            Archived
+          </div>
         </div>
       </div>
     </header>
