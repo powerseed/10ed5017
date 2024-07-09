@@ -79,7 +79,7 @@ const Call = (props) => {
                     </div>
                 </div>
 
-                <div className="archive-button" onClick={archiveCall}>
+                <div title="Archive this call" className="archive-button" onClick={archiveCall}>
                     <img src='../../public/images/archive.svg' width={25} height={25} />
                 </div>
             </div>
