@@ -135,8 +135,8 @@ const Inbox = () => {
                             {
                                 Array.from(dateMapsCall.keys()).map(date => {
                                     return (
-                                        <>
-                                            <div key={date} className="w-full flex justify-center py-[10px] text-[12px] text-[var(--text-color-secondary)] font-bold">
+                                        <div key={date} className='w-full'>
+                                            <div className="flex justify-center py-[10px] text-[12px] text-[var(--text-color-secondary)] font-bold">
                                                 <div style={dividerStyle}></div>
 
                                                 <div className="mx-[10px]">
@@ -157,7 +157,7 @@ const Inbox = () => {
                                                     })
                                                 }
                                             </div>
-                                        </>
+                                        </div>
                                     )
                                 })
                             }
