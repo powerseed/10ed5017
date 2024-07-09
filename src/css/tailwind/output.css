@@ -630,16 +630,20 @@ video {
   height: 25px;
 }
 
+.h-\[50px\] {
+  height: 50px;
+}
+
 .h-\[60px\] {
   height: 60px;
 }
 
-.h-full {
-  height: 100%;
+.h-\[70px\] {
+  height: 70px;
 }
 
-.h-\[50px\] {
-  height: 50px;
+.h-full {
+  height: 100%;
 }
 
 .w-\[16px\] {
@@ -654,20 +658,20 @@ video {
   width: 25px;
 }
 
-.w-\[90\%\] {
-  width: 90%;
-}
-
-.w-full {
-  width: 100%;
-}
-
 .w-\[50px\] {
   width: 50px;
 }
 
 .w-\[80px\] {
   width: 80px;
+}
+
+.w-\[90\%\] {
+  width: 90%;
+}
+
+.w-full {
+  width: 100%;
 }
 
 .grow {
@@ -684,10 +688,6 @@ video {
 
 .flex-col {
   flex-direction: column;
-}
-
-.items-start {
-  align-items: flex-start;
 }
 
 .items-center {
@@ -754,6 +754,11 @@ video {
   padding: 5px;
 }
 
+.px-\[20px\] {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 .py-\[10px\] {
   padding-top: 10px;
   padding-bottom: 10px;
@@ -762,15 +767,6 @@ video {
 .py-\[15px\] {
   padding-top: 15px;
   padding-bottom: 15px;
-}
-
-.px-\[20px\] {
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.pl-2 {
-  padding-left: 0.5rem;
 }
 
 .text-\[10px\] {
@@ -833,10 +829,6 @@ video {
 
 .hover\:text-\[var\(--text-color-primary\)\]:hover {
   color: var(--text-color-primary);
-}
-
-.hover\:opacity-10:hover {
-  opacity: 0.1;
 }
 
 .hover\:opacity-70:hover {
