@@ -52,21 +52,23 @@ const Call = (props) => {
                 <div className="mx-[20px]">
                     {
                         props.call.direction === "inbound" ?
-                            <img src="../../public/images/inbound-call.svg" width={20} height={20} />
+                            <img src="../../public/images/inbound-call.svg" title="Inbound" alt="Inbound" width={20} height={20} />
                             :
-                            <img src="../../public/images/outbound-call.svg" width={20} height={20} />
+                            <img src="../../public/images/outbound-call.svg" title="Outbound" alt="Outbound" width={20} height={20} />
                     }
                 </div>
 
                 <div className="grow flex flex-col space-y-[5px]">
                     <div className="flex space-x-[5px]">
-                        <div className="text-[16px] font-bold text-[var(--text-color-primary)]">
+                        <div className="text-[16px] font-bold text-[var(--text-color-primary)]"
+                            title={props.call.direction === "inbound" ? 'From' : 'To'}>
                             {
                                 props.call.direction === "inbound" ? props.call.from : props.call.to
                             }
                         </div>
 
-                        <div className="w-[16px] h-[16px] flex justify-center items-center bg-red-600 text-white font-bold rounded-full">
+                        <div className="w-[16px] h-[16px] flex justify-center items-center bg-red-600 text-white font-bold rounded-full"
+                            title="Via number">
                             {props.call.via}
                         </div>
                     </div>
@@ -87,7 +89,7 @@ const Call = (props) => {
                     </div>
                 </div>
 
-                <div title="Archive this call" className="mr-[5px] cursor-pointer" onClick={archiveCall}>
+                <div title="Archive this call" className="mr-[5px] cursor-pointer hover:opacity-70" onClick={archiveCall}>
                     <img className="w-[25px] h-[25px]" src='../../public/images/archive.svg' />
                 </div>
             </div>

@@ -25,13 +25,13 @@ const Header = (props) => {
 
       <div ref={tabListRef} className='flex grow items-center justify-evenly'>
         <div id="inbox"
-          className={`cursor-pointer h-full flex items-center text-[14px] font-bold ${props.currentTab === 'inbox' ? 'text-[var(--text-color-primary)] shadow-[0px_-3px_0px_#FF8C00_inset]' : 'text-[var(--text-color-secondary)]'}`}
+          className={`cursor-pointer h-full flex items-center text-[14px] font-bold hover:text-[var(--text-color-primary)] ${props.currentTab === 'inbox' ? 'text-[var(--text-color-primary)] shadow-[0px_-3px_0px_#FF8C00_inset]' : 'text-[var(--text-color-secondary)]'}`}
           onClick={(event) => props.switchTab(event.target.id)}>
           Inbox
         </div>
 
         <div id="archived"
-          className={`cursor-pointer h-full flex items-center text-[14px] font-bold ${props.currentTab === 'archived' ? 'text-[var(--text-color-primary)] shadow-[0px_-3px_0px_#FF8C00_inset]' : 'text-[var(--text-color-secondary)]'}`}
+          className={`cursor-pointer h-full flex items-center text-[14px] font-bold hover:text-[var(--text-color-primary)] ${props.currentTab === 'archived' ? 'text-[var(--text-color-primary)] shadow-[0px_-3px_0px_#FF8C00_inset]' : 'text-[var(--text-color-secondary)]'}`}
           onClick={(event) => props.switchTab(event.target.id)}>
           Archived
         </div>
