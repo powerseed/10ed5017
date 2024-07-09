@@ -5,8 +5,8 @@ const Header = (props) => {
 
   return (
     <header>
-      <div className='icon-container'>
-        <svg width='486px' height='168px' viewBox='0 0 486 168' version='1.1' xmlns='http://www.w3.org/2000/svg'>
+      <div className='p-[10px]'>
+        <svg className='w-full h-full' width='486px' height='168px' viewBox='0 0 486 168' version='1.1' xmlns='http://www.w3.org/2000/svg'>
           <g stroke='none' strokeWidth='1' fill='none' fillRule='evenodd'>
             <g transform='translate(207.000000, 24.000000)'>
               <rect fill='#424242' x='270' y='6' width='9' height='90' rx='4.5' />
@@ -23,12 +23,16 @@ const Header = (props) => {
         </svg>
       </div>
 
-      <div ref={tabListRef} className='tab-list'>
-        <div id="inbox" className={`tab ${props.currentTab === 'inbox' ? 'selected' : ''}`} onClick={(event) => props.switchTab(event.target.id)}>
+      <div ref={tabListRef} className='flex grow items-center justify-evenly'>
+        <div id="inbox"
+          className={`cursor-pointer h-full flex items-center text-[14px] font-bold ${props.currentTab === 'inbox' ? 'text-[var(--text-color-primary)] shadow-[0px_-3px_0px_#FF8C00_inset]' : 'text-[var(--text-color-secondary)]'}`}
+          onClick={(event) => props.switchTab(event.target.id)}>
           Inbox
         </div>
 
-        <div id="archived" className={`tab ${props.currentTab === 'archived' ? 'selected' : ''}`} onClick={(event) => props.switchTab(event.target.id)}>
+        <div id="archived"
+          className={`cursor-pointer h-full flex items-center text-[14px] font-bold ${props.currentTab === 'archived' ? 'text-[var(--text-color-primary)] shadow-[0px_-3px_0px_#FF8C00_inset]' : 'text-[var(--text-color-secondary)]'}`}
+          onClick={(event) => props.switchTab(event.target.id)}>
           Archived
         </div>
       </div>

@@ -56,18 +56,18 @@ const Inbox = () => {
     }
 
     return (
-        <div className='main-container'>
-            <div className='archive-all-button'>
+        <div className='flex flex-col justify-center items-center'>
+            <div className='w-[90%]'>
                 <BlockButton text="Archive all calls" handleClick={archiveAllCalls} />
             </div>
 
             {
                 error !== undefined ?
-                    <div className='error'>
+                    <div className='w-[90%] mt-[50px] text-[16px]'>
                         {error}
                     </div>
                     :
-                    <div className='call-list'>
+                    <div className='w-full flex flex-col'>
                         {
                             calls.map(call => {
                                 return (
