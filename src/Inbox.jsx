@@ -3,8 +3,9 @@ import Call from './components/Call.jsx';
 import BlockButton from './components/BlockButton.jsx';
 
 const Inbox = () => {
-    let [calls, setCalls] = useState([]);
+    let [calls, setCalls] = useState(undefined);
     let [error, setError] = useState(undefined);
+    let [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         fetch(process.env.REACT_APP_BASE_URL_OF_API + "/activities")
@@ -20,6 +21,12 @@ const Inbox = () => {
             })
             .catch(() => setError('Something wrong just occurred. Please try again later. '));
     }, [])
+
+    useEffect(() => {
+        if (calls !== undefined) {
+            setIsLoading(false);
+        }
+    }, [calls])
 
     function archiveAllCalls() {
         if (calls.length === 0) {
@@ -59,7 +66,7 @@ const Inbox = () => {
     }
 
     return (
-        <div className='flex flex-col justify-center items-center'>
+        <div className='h-full flex flex-col items-center'>
             <div className='w-[90%]'>
                 <BlockButton text="Archive all calls" handleClick={archiveAllCalls} />
             </div>
@@ -70,17 +77,21 @@ const Inbox = () => {
                         {error}
                     </div>
                     :
-                    <div className='w-full flex flex-col'>
-                        {
-                            calls.map(call => {
-                                return (
-                                    <Call key={call.id} call={call} removeCallFromList={removeCallFromList} />
-                                )
-                            })
-                        }
-                    </div>
+                    isLoading ?
+                        <div className='w-[90%] mt-[50px] text-[16px] flex justify-center'>
+                            <img className='w-[50px] h-[50px]' src='../public/images/loading.svg' />
+                        </div>
+                        :
+                        <div className='w-full flex flex-col'>
+                            {
+                                calls.map(call => {
+                                    return (
+                                        <Call key={call.id} call={call} removeCallFromList={removeCallFromList} />
+                                    )
+                                })
+                            }
+                        </div>
             }
-
         </div>
     )
 }
