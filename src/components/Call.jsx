@@ -2,15 +2,6 @@ import Moment from "react-moment";
 import { useEffect, useState } from "react";
 
 const Call = (props) => {
-    const dividerStyle = {
-        marginBottom: '3px',
-        flexGrow: 1,
-        backgroundImage: "linear-gradient(to right, #A0A0A0 10%, rgba(255, 255, 255, 0) 0%)",
-        backgroundPosition: "bottom",
-        backgroundSize: "4px 1px",
-        backgroundRepeat: "repeat-x"
-    };
-
     let [isArchiving, setIsArchiving] = useState(false);
 
     useEffect(() => {
@@ -29,7 +20,7 @@ const Call = (props) => {
         })
             .then((response) => {
                 if (response.ok) {
-                    props.removeCallFromList(props.call.id)
+                    props.removeCallFromList(props.date, props.call.id)
                 }
                 else {
                     throw new Error()
@@ -45,14 +36,6 @@ const Call = (props) => {
 
     return (
         <div className="w-full flex flex-col items-center">
-            <div className="w-full flex justify-center py-[10px] text-[12px] text-[var(--text-color-secondary)] font-bold">
-                <div style={dividerStyle}></div>
-                <div className="mx-[10px]">
-                    <Moment format="MMMM, DD YYYY">{props.call.created_at}</Moment>
-                </div>
-                <div style={dividerStyle}></div>
-            </div>
-
             <div className="w-[90%] h-[70px] flex justify-center items-center rounded-xl py-[15px] border">
                 {
                     isArchiving ?
@@ -61,7 +44,7 @@ const Call = (props) => {
                         </div>
                         :
                         <>
-                            <div className="h-full mx-[20px]">
+                            <div className="h-full flex items-center mx-[20px]">
                                 {
                                     props.call.direction === "inbound" ?
                                         <img src="../../public/images/inbound-call.svg" title="Inbound" alt="Inbound" width={20} height={20} />
