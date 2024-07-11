@@ -1,7 +1,13 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require("copy-webpack-plugin");
 const Dotenv = require('dotenv-webpack');
 
 module.exports = {
+  entry: './src/index.js',
+  output: {
+    filename: 'bundle.js',
+    publicPath: '/',
+  },
   module: {
     rules: [
       {
@@ -15,7 +21,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [ 'style-loader', 'css-loader' ]
+        use: ['style-loader', 'css-loader']
       },
       {
         test: /\.(js|jsx)$/,
@@ -28,9 +34,14 @@ module.exports = {
   },
   plugins: [
     new HtmlWebPackPlugin({
-      template: "./public/index.html",
-      filename: "./index.html"
+      template: 'public/index.html'
     }),
+    new CopyPlugin([
+      {
+        from: "public/images",
+        to: "public/images"
+      }
+    ]),
     new Dotenv()
   ]
 };
