@@ -3,7 +3,7 @@ import Call from './components/Call.jsx';
 import BlockButton from './components/BlockButton.jsx';
 import Moment from "react-moment";
 
-const Archived = () => {
+export default function Archived() {
     const dividerStyle = {
         marginBottom: '3px',
         flexGrow: 1,
@@ -139,5 +139,3 @@ const Archived = () => {
         </div>
     )
 }
-
-export default Archived;

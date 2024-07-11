@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 
-const Header = (props) => {
+export default function Header(props) {
   let tabListRef = useRef(null);
 
   return (
@@ -45,5 +45,3 @@ const Header = (props) => {
     </header>
   );
 };
-
-export default Header;

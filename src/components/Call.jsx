@@ -1,7 +1,7 @@
 import Moment from "react-moment";
 import { useEffect, useState } from "react";
 
-const Call = (props) => {
+export default function Call(props) {
     let [isArchiving, setIsArchiving] = useState(false);
 
     useEffect(() => {
@@ -96,5 +96,3 @@ const Call = (props) => {
         </div>
     )
 }
-
-export default Call;

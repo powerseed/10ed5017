@@ -1,27 +1,15 @@
 'use client';
 
-import { useState } from 'react';
-import Header from './Header.jsx';
-import Inbox from './Inbox.jsx';
-import Archived from './Archived.jsx';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from './Home.jsx';
 
-const App = () => {
-  let [currentTab, setCurrentTab] = useState('inbox');
-
-  function switchTab(tabName) {
-    setCurrentTab(tabName)
-  }
-
+export default function App() {
   return (
-    <div className='container'>
-      <Header switchTab={switchTab} currentTab={currentTab} />
-
-      {
-        currentTab === 'inbox' ? <Inbox /> : <Archived />
-      }
-
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
-
-export default App;

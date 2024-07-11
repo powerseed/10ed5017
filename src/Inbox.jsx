@@ -3,7 +3,7 @@ import Call from './components/Call.jsx';
 import BlockButton from './components/BlockButton.jsx';
 import Moment from "react-moment";
 
-const Inbox = () => {
+export default function Inbox() {
     const dividerStyle = {
         marginBottom: '3px',
         flexGrow: 1,
@@ -166,5 +166,3 @@ const Inbox = () => {
         </div>
     )
 }
-
-export default Inbox;

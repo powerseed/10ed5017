@@ -1,4 +1,4 @@
-const BlockButton = (props) => {
+export default function BlockButton(props) {
     return (
         <div className="w-full h-[60px] px-[20px] flex items-center space-x-1 border rounded-xl rounded-t-none cursor-pointer hover:shadow-2xl transition-all"
             onClick={props.handleClick}>
@@ -19,5 +19,3 @@ const BlockButton = (props) => {
         </div>
     )
 }
-
-export default BlockButton;
