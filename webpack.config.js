@@ -36,12 +36,14 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: 'public/index.html'
     }),
-    new CopyPlugin([
-      {
-        from: "public/images",
-        to: "public/images"
-      }
-    ]),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: "public/images",
+          to: "public/images"
+        },
+      ],
+    }),
     new Dotenv()
   ]
 };
