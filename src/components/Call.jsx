@@ -47,14 +47,14 @@ const Call = (props) => {
                             <div className="h-full flex items-center mx-[20px]">
                                 {
                                     props.call.direction === "inbound" ?
-                                        <img src="../../public/images/inbound-call.svg" title="Inbound" alt="Inbound" width={20} height={20} />
+                                        <img src="public/images/inbound-call.svg" title="Inbound" alt="Inbound" width={20} height={20} />
                                         :
-                                        <img src="../../public/images/outbound-call.svg" title="Outbound" alt="Outbound" width={20} height={20} />
+                                        <img src="public/images/outbound-call.svg" title="Outbound" alt="Outbound" width={20} height={20} />
                                 }
                             </div>
 
                             <div className="grow flex flex-col space-y-[5px]">
-                                <div className="flex space-x-[5px]">
+                                <div className="flex items-center space-x-[5px]">
                                     <div className="text-[16px] font-bold text-[var(--text-color-primary)]"
                                         title={props.call.direction === "inbound" ? 'From' : 'To'}>
                                         {
@@ -77,7 +77,7 @@ const Call = (props) => {
                             </div>
 
                             <div className="flex items-center font-bold text-[var(--text-color-secondary)]">
-                                <img className="w-[20px] h-[20px]" src="../../public/images/three-dots-vertical.svg" />
+                                <img className="w-[20px] h-[20px]" src="public/images/three-dots-vertical.svg" />
                                 <Moment format="hh:mm">{props.call.created_at}</Moment>
                                 <div className="ml-[5px] mr-[8px] p-[5px] text-[10px] font-extrabold rounded border">
                                     <Moment format="A">{props.call.created_at}</Moment>
@@ -87,7 +87,7 @@ const Call = (props) => {
                             {
                                 props.isArchiveButtonDisplayed &&
                                 <div title="Archive this call" className="mr-[5px] cursor-pointer hover:opacity-70" onClick={archiveCall}>
-                                    <img className="w-[25px] h-[25px]" src='../../public/images/archive.svg' />
+                                    <img className="w-[25px] h-[25px]" src='public/images/archive.svg' />
                                 </div>
                             }
                         </>

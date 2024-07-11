@@ -9,7 +9,7 @@ const BlockButton = (props) => {
                     </div>
                     :
                     <>
-                        <img src='../../public/images/archive.svg' width={25} height={25} />
+                        <img src='public/images/archive.svg' width={25} height={25} />
                         <div className='font-bold text-[14px] text-[var(--text-color-primary)]'>
                             {props.text}
                         </div>

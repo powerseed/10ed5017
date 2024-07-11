@@ -128,7 +128,7 @@ const Inbox = () => {
                     :
                     isLoading ?
                         <div className='w-[90%] mt-[50px] text-[16px] flex justify-center'>
-                            <img className='w-[50px] h-[50px]' src='../public/images/loading.svg' />
+                            <img className='w-[50px] h-[50px]' src='public/images/loading.svg' />
                         </div>
                         :
                         <>
