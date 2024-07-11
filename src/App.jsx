@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
+'use client';
 
+import React, { useState } from 'react';
 import Header from './Header.jsx';
 import Inbox from './Inbox.jsx';
 import Archived from './Archived.jsx';
@@ -23,7 +23,5 @@ const App = () => {
     </div>
   );
 };
-
-ReactDOM.render(<App />, document.getElementById('app'));
 
 export default App;
