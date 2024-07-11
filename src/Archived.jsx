@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Call from './components/Call.jsx';
 import BlockButton from './components/BlockButton.jsx';
 import Moment from "react-moment";

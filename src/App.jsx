@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Header from './Header.jsx';
 import Inbox from './Inbox.jsx';
 import Archived from './Archived.jsx';
